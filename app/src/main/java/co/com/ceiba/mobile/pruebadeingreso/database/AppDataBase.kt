@@ -7,13 +7,11 @@ import android.content.Context
 import co.com.ceiba.mobile.pruebadeingreso.post.model.User
 
 @Database(entities = [User::class], version = 1)
-object AppDataBase : RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
     var INSTANCE: AppDataBase? = null
     fun getInstance(context: Context?): AppDataBase? {
         if (INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context!!, AppDataBase::class.java, "pruebaingreso.db")
-                    .allowMainThreadQueries()
-                    .fallbackToDestructiveMigration()
+            INSTANCE = Room.databaseBuilder(context!!, AppDataBase::class.java, "pruebaingreso")
                     .build()
         }
         return INSTANCE
