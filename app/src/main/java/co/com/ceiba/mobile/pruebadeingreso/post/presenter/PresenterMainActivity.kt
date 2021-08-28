@@ -27,6 +27,6 @@ class PresenterMainActivity : IPresenterMainActivity {
 
     }
     override fun setUser(listUser: ArrayList<User>) {
-
+        view?.setUser(listUser)
     }
 }

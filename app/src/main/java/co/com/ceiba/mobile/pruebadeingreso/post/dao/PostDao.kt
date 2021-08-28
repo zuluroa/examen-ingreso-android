@@ -9,9 +9,12 @@ import co.com.ceiba.mobile.pruebadeingreso.post.model.User
 interface PostDao {
 
     @Query("SELECT * FROM User")
-    suspend fun getAll(): List<User>
+    fun getAll(): ArrayList<User>
+
+    @Query("SELECT * FROM User WHERE id = :userId")
+    fun getId(userId: Int): User
 
     @Insert
-    suspend fun insetPost(user: User)
+    fun insetPost(user: User)
 
 }
